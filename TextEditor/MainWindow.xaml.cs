@@ -128,6 +128,7 @@ namespace TextEditor
                 {
                     FilePath = dialog.FileName;
                     textArea.Text = File.ReadAllText(FilePath);
+                    IsSaved = true;
                     Title = $"@isaaholic Text Editor - {dialog.SafeFileName}";
                 }
                 else
@@ -177,13 +178,18 @@ namespace TextEditor
 
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
-            Save(FilePath);
-        }
-
-        private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
-        {
-            string filePath = string.Empty;
-            Save(filePath);
+            if (sender is MenuItem mi)
+            {
+                switch ((string)mi.Header)
+                {
+                    case "Save":
+                        Save(FilePath);
+                        break;
+                    case "Save as":
+                        Save(string.Empty);
+                        break;
+                }
+            }
         }
 
         private void MenuItem_DateTime_Click(object sender, RoutedEventArgs e)

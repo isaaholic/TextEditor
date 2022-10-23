@@ -1,0 +1,58 @@
+﻿<Window x:Class="TextEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEditor"
+        mc:Ignorable="d"
+        Title="@isaaholic Text Editor" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48px" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="1" FontSize="32" Name="textArea" DockPanel.Dock="Top" TextChanged="textArea_TextChanged" />
+        <DockPanel Grid.Row="0" Name="dockPanel">
+            <StackPanel DockPanel.Dock="Top">
+                <Menu FontSize="15">
+                    <MenuItem Header="File">
+                        <MenuItem Header="New" Click="MenuItem_New_Click"/>
+                        <MenuItem Header="Open" Click="MenuItem_Open_Click"/>
+                        <MenuItem Header="Save" Click="MenuItem_Save_Click" />
+                        <MenuItem Header="Save as" Click="MenuItem_SaveAs_Click"/>
+                        <Separator/>
+                        <MenuItem Header="Exit" Click="MenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Edit">
+                        <MenuItem Command="Undo" Header="Undo" />
+                        <Separator/>
+                        <MenuItem Command="Cut" Header="Cut" />
+                        <MenuItem Command="Copy" Header="Copy" />
+                        <MenuItem Command="Paste" Header="Paste" />
+                        <MenuItem Command="Delete" Header="Delete" />
+                        <Separator/>
+                        <MenuItem Command="SelectAll" Header="Select all"/>
+                        <MenuItem Header="Time/Date" Click="MenuItem_DateTime_Click" />
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <WrapPanel>
+                        <Label Content="Size" FontSize="12"/>
+                        <TextBox Name="fontSizeText" Text="32" Padding="-2" Width="100" Height="15" TextChanged="fontSizeText_TextChanged" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Name="labelS" Content="Style" FontSize="12"/>
+                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBoxItem Content="Normal" IsSelected="True"/>
+                            <ComboBoxItem Content="Oblique" />
+                            <ComboBoxItem Content="Italic" />
+                        </ComboBox>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <CheckBox Name="autoSave" Content="Auto Save" />
+                    </WrapPanel>
+                </Menu>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

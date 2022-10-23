@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextEditor"
         mc:Ignorable="d"
+        MinHeight="175" MinWidth="375"
         Title="@isaaholic Text Editor" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48px" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" FontSize="32" Name="textArea" DockPanel.Dock="Top" TextChanged="textArea_TextChanged" />
+        <TextBox TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="1" FontSize="32" Name="textArea" DockPanel.Dock="Top" TextChanged="textArea_TextChanged" />
         <DockPanel Grid.Row="0" Name="dockPanel">
             <StackPanel DockPanel.Dock="Top">
                 <Menu FontSize="15">
